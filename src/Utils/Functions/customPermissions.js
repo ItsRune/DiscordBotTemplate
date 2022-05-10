@@ -73,7 +73,7 @@ function hasPermission(Message, Permissions, Guild) {
       if (String(Message.channel.id) == String(ChannelId)) {
         goodToRun++;
       }
-    } else if (Member.hasPermission(Discord.Permissions.FLAGS[String(Permissions[i]).toUpperCase()])) {
+    } else if (Member.permissions.has(Discord.Permissions.FLAGS[String(Permissions[i]).toUpperCase()])) {
       goodToRun++;
     }
   };
