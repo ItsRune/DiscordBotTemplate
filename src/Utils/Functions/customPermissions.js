@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const axios = require('axios');
 
 // Only pass Message and Members!
 function hasPermission(Message, Permissions, Guild) {
@@ -29,44 +28,6 @@ function hasPermission(Message, Permissions, Guild) {
       if (Guild.ownerId === Member.id) {
         goodToRun++;
       }
-    } else if (String(permName).toLowerCase().includes("grouprank")) {
-      const Split = String(permName).toLowerCase().split(":");
-      let rankAndAboveNeeded = Split[1];
-      let Tolerance = Split[2] || ">=";
-
-      function checkTolerance(value1, value2) {
-        switch(Tolerance) {
-          case ">=":
-            return value1 >= value2;
-            break;
-          case "<=":
-            return value1 <= value2;
-            break;
-          case "==":
-            return value1 == value2;
-            break;
-          case "!=":
-            return value1 != value2;
-        }
-      }
-
-      axios.get(`https://api.blox.link/v1/user/${Member.id}`).then((body) => {
-        if (body.data && body.data.status == "ok") {
-          Roblox.getGroups(Number(body.data.primaryAccount)).then((groups) => {
-            for (let i = 0; i < groups.length; i++) {
-              let group = groups[i];
-
-              if (group.Id == GroupId && checkTolerance(group.Rank, Number(rankAndAboveNeeded)) == true) {
-                goodToRun++;
-              }
-            }
-          }).catch((err) => {
-            console.error(err);
-          })
-        }
-      }).catch((err) => {
-        console.error(err);
-      });
     } else if (String(permName).toLowerCase().includes('channelid')) {
       const ChannelId = String(permName).toLowerCase().split(":")[1];
 

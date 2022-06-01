@@ -2,7 +2,6 @@
     "Discord_Token": "",
 
     "Options": {
-        "Prefix": "!",
-        "RobloxGroupId": 0
+        "Prefix": "!"
     }
 }
