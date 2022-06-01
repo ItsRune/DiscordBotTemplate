@@ -21,7 +21,8 @@ const Client = new Discord.Client({
     Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
     Intents.FLAGS.DIRECT_MESSAGE_TYPING,
     Intents.FLAGS.GUILD_SCHEDULED_EVENTS
-  ]
+  ],
+  partials: ['CHANNEL'] // For Dm messages.
 });
 
 Client.hasPermission = customPerms;

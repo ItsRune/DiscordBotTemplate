@@ -14,6 +14,10 @@ class Event extends EventFormat {
     const Command = Client.Commands.get(Cmd);
     if (!Command) return;
     
+    if (Message.channel.type === "DM" && Command.dmsAllowed === true) {
+      return Command.run(Client, Message, Args);
+    }
+
     const hasPermission = await Client.hasPermission(Message, Command.permissions);
     if (hasPermission) {
       Command.run(Client, Message, Args);

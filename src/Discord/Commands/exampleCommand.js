@@ -11,8 +11,8 @@ Custom permissions include:
 
 class Command extends CommandFormat {
   constructor() {
-    // Cmd Name, Cmd Description, Alias, Usage, Permissions
-    super('ping', 'test', ['p'], '', [
+    // Cmd Name, Cmd Description, Alias, Usage, canBeUsedInDms, Permissions
+    super('ping', 'test', ['p'], '', true, [
         // Do not put discord permission flags, put the names instead.
     ]);
   };
